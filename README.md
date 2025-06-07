@@ -33,14 +33,19 @@ The package integrates with ROS 2's robot description framework, parsing URDF (U
 
 ### Installation
 
+This setup uses the [lucy_devtools](https://github.com/Sentience-Robotics/lucy_devtools) repository to build the package.
+
 ```bash
 # Clone the repository into your ROS 2 workspace
-cd ~/ros2_ws/src
+cd ~/lucy_/src
 git clone https://github.com/Sentience-Robotics/lucy_control_panel_package.git
 
+# Enter into the devtools ROS 2 workspace
+Env launch
+cd ~/lucy_ros2_ws
+
 # Build the package
-cd ~/ros2_ws
-colcon build --packages-select lucy_control_panel_package
+Make -b
 
 # Source the workspace
 source install/setup.bash
@@ -50,10 +55,20 @@ source install/setup.bash
 
 ```bash
 # Launch the REST API server
-ros2 launch lucy_control_panel_package lucy_api.launch.py
+ros2 run lucy_control_panel_package lucy_api_server
+
+# In another terminal, launch the node with the following commands:
+ros2 lifecycle get /lucy_api_server && \
+ros2 lifecycle set /lucy_api_server configure && \
+ros2 lifecycle set /lucy_api_server activate
+
+# You can check the status of the node with:
+ros2 lifecycle get /lucy_api_server
+ros2 param get /lucy_api_server server_port
+ros2 param get /lucy_api_server server_host
 
 # The API will be available at http://localhost:8080
-# Use with the Lucy Control Panel frontend for full functionality
+# Use with the [Lucy Control Panel](https://github.com/Sentience-Robotics/lucy_control_panel) frontend for full functionality
 ```
 
 ---

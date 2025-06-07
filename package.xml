@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypeset="xml-schema"?>
+<package format="3">
+  <name>lucy_control_panel_package</name>
+  <version>0.1.0</version>
+  <description>REST API backend for managing robot joints via URDF files in ROS 2</description>
+
+  <maintainer email="contact@sentience-robotics.fr">Sentience Robotics</maintainer>
+  <license>GPL-3.0</license>
+  <url type="website">https://github.com/Sentience-Robotics/lucy_control_panel_package</url>
+  <url type="bugtracker">https://github.com/Sentience-Robotics/lucy_control_panel_package/issues</url>
+  <url type="repository">https://github.com/Sentience-Robotics/lucy_control_panel_package</url>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Core ROS 2 dependencies -->
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <!-- Robot description and control -->
+  <depend>urdf</depend>
+  <depend>robot_state_publisher</depend>
+
+  <!-- JSON handling (using system package) -->
+
+  <!-- HTTP server (we'll use cpp-httplib as header-only) -->
+
+  <!-- Testing dependencies -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,40 +1,73 @@
-# REPOSITORY TEMPLATE
-<!-- TODO list -->
-
-> When creating a repository with this template, here are the steps you need to follow :
-
-- Update the title, the overview & the feature list
-  - You can add as many section as needed
-- Update the [Acknowledgments](#-acknowledgments) section as needed
-  - Be sure to keep InMoov & the community as acknowledgments
-- Update the [CONTRIBUTING.md](CONTRIBUTING.md) file
-  - Change all `<project>` with the correct project name, it will be used, for example, for github urls
-  - `sed -i 's/<project>/actual_project_name/g' ./CONTRIBUTING.MD`
-- Delete this [REPOSITORY TEMPLATE](#repository-template) section
-
-# Amazing project
-<!-- Include a short decription of about one line of the project -->
-...
+# Lucy Control Panel Package
+*REST API backend for managing robot joints via URDF files in ROS 2*
 
 ---
 
 ## 📌 Overview
-<!-- Provide a more in-depth description of what the project's goals are, add some context, etc -->
 
-...
+The Lucy Control Panel Package is a ROS 2 package that provides a REST API backend for the [Lucy Control Panel](https://github.com/Sentience-Robotics/lucy_control_panel) project. This package enables remote management and control of robot joints through a web-based interface by exposing robot capabilities via RESTful endpoints.
+
+The package integrates with ROS 2's robot description framework, parsing URDF (Unified Robot Description Format) files to dynamically generate API endpoints for each controllable joint. This allows for real-time monitoring and control of robot actuators through HTTP requests, making it easy to integrate with web applications, mobile apps, or other external systems.
 
 ---
 
 ## 🚀 Features
-<!-- Add a list of the key features of the project -->
 
-- ...
+- **REST API Server**: Embedded HTTP server providing RESTful endpoints for robot control
+- **URDF Integration**: Automatic parsing of robot URDF files to discover available joints and capabilities
+- **Joint Control**: Real-time position, velocity, and effort control for robot joints
+- **Status Monitoring**: Live feedback on joint states, positions, and health status
+- **ROS 2 Native**: Full integration with ROS 2 ecosystem including topics, services, and parameters
+- **Web Interface Compatible**: Designed to work seamlessly with the Lucy Control Panel frontend
+- **Configurable**: Flexible configuration options for different robot platforms and setups
+
+---
+
+## 🛠️ Installation & Usage
+
+### Prerequisites
+
+- ROS 2 (Humble or later)
+- Python 3.8+
+- Valid URDF file for your robot
+
+### Installation
+
+```bash
+# Clone the repository into your ROS 2 workspace
+cd ~/ros2_ws/src
+git clone https://github.com/Sentience-Robotics/lucy_control_panel_package.git
+
+# Build the package
+cd ~/ros2_ws
+colcon build --packages-select lucy_control_panel_package
+
+# Source the workspace
+source install/setup.bash
+```
+
+### Quick Start
+
+```bash
+# Launch the REST API server
+ros2 launch lucy_control_panel_package lucy_api.launch.py
+
+# The API will be available at http://localhost:8080
+# Use with the Lucy Control Panel frontend for full functionality
+```
 
 ---
 
 ## 📖 Documentation
 
-For more details on creation processes, troubleshooting, and other guidance, visit the [Sentience Robotics documentation](https://docs.sentience-robotics.fr).
+For more details on API endpoints, configuration options, and integration guides, visit the [Sentience Robotics documentation](https://docs.sentience-robotics.fr).
+
+---
+
+## 🔗 Related Projects
+
+- **[Lucy Control Panel](https://github.com/Sentience-Robotics/lucy_control_panel)** - Frontend web interface for robot control
+- **[InMoov Project](https://inmoov.fr/)** - Open-source humanoid robot platform
 
 ---
 
@@ -63,19 +96,19 @@ This project is licensed under the **GNU GPL V3 License**. See the [LICENSE](LIC
 ---
 
 ## 🙌 Acknowledgments
-<!-- Add, as needed, the peoples, organisation or projects that helped this project -->
 
-- 🎉 [InMoov Project](https://inmoov.fr/) – Original design by Gael Langevin<br>
-- 🎉 **All contributors** to the InMoov community<br>
+- 🎉 [InMoov Project](https://inmoov.fr/) – Original design by Gael Langevin
+- 🎉 **ROS 2 Community** – For the excellent robotics framework
+- 🎉 **All contributors** to the InMoov and ROS communities
 
 ---
 
 ## 📬 Contact
 
-- 📧 Email: [contact@sentience-robotics.fr](mailto:contact@sentience-robotics.fr)<br>
-- 🌍 GitHub Organization: [Sentience Robotics](https://github.com/sentience-robotics)<br>
-
+- 📧 Email: [contact@sentience-robotics.fr](mailto:contact@sentience-robotics.fr)
+- 🌍 GitHub Organization: [Sentience Robotics](https://github.com/sentience-robotics)
 
 ---
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
+[![ROS 2 Humble](https://img.shields.io/badge/ROS_2-Humble-34aec5?logo=ros)](https://docs.ros.org/en/humble/)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)

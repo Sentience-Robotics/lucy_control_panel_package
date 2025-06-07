@@ -1,4 +1,4 @@
-# Code of Conduct - Title
+# Code of Conduct - Lucy Control Panel Package
 
 ## Our Pledge
 
